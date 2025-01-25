@@ -1,20 +1,21 @@
+import { Link } from 'react-router-dom';
 import './Header.css';
 
-function HeaderComponent() {
+function Header() {
   return (
     <header className="header">
       <div className="header-content">
-        <div className="logo">
+        <Link to="/" className="logo">
           <span className="logo-text">GC</span>
           <h1>Generador Clientes</h1>
-        </div>
+        </Link>
         
         <nav className="nav-menu">
           <ul>
-            <li><a href="/" className="active">Inicio</a></li>
-            <li><a href="/perfiles">Perfiles</a></li>
-            <li><a href="/estadisticas">Estadísticas</a></li>
-            <li><a href="/contacto">Contacto</a></li>
+            <li><Link to="/">Inicio</Link></li>
+            <li><Link to="/crear-cliente">Crear Cliente</Link></li>
+            <li><Link to="/perfiles">Perfiles</Link></li>
+            <li><Link to="/estadisticas">Estadísticas</Link></li>
           </ul>
         </nav>
 
@@ -23,4 +24,4 @@ function HeaderComponent() {
   );
 }
 
-export default HeaderComponent;
+export default Header;
