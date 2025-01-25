@@ -1,8 +1,7 @@
-// App.jsx
 import { useState } from 'react';
 import './App.css';
 import Header from './components/header/header';
-import RandomUser from './components/randomUser'; 
+import RandomUser from './components/RandomUser/RandomUser';
 import Footer from './components/footer/Footer';
 import { Menu } from 'lucide-react';
 

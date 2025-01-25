@@ -1,4 +1,4 @@
-import useRandomUser from '../utils/useRandomUser';
+import useRandomUser from '../../utils/useRandomUser';
 
 const RandomUser = () => {
   const {
