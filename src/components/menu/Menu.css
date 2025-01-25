@@ -1,0 +1,66 @@
+/* src/components/Menu/Menu.css */
+.menu-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .menu-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+  }
+  
+  .menu-filters h2 {
+    width: 100%;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .filter-group {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+  }
+  
+  .filter-group input,
+  .filter-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .view-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .view-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .view-btn.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+  }
+  
+  @media (max-width: 768px) {
+    .filter-group {
+      min-width: 100%;
+    }
+  }
