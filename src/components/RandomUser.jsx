@@ -1,4 +1,3 @@
-import React from 'react';
 import useRandomUser from '../utils/useRandomUser';
 
 const RandomUser = () => {
