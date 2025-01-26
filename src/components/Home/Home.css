@@ -6,6 +6,7 @@
   --accent-primary: #646cff;
   --accent-secondary: #61dafb;
   --gradient-primary: linear-gradient(135deg, #646cff 0%, #61dafb 100%);
+  --glow-shadow: 0 0 20px rgba(100, 108, 255, 0.2);
 }
 
 .home-container {
@@ -38,6 +39,14 @@
   animation: shimmer 2s infinite linear;
 }
 
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(100, 108, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
 .hero-title {
   font-size: 3.5rem;
   color: var(--text-primary);
@@ -45,17 +54,12 @@
   line-height: 1.2;
 }
 
-.gradient-text {
+.gradient-text,
+.stat-number {
   background: var(--gradient-primary);
   background-clip: text;
-  background-clip: text;
-  background-clip: text;
-  background-clip: text;
-  background-clip: text;
-  background-clip: text;
-  background-clip: text;
-  background-clip: text;
   -webkit-background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
   animation: gradientFlow 3s infinite;
 }
@@ -122,11 +126,14 @@
   border-radius: 16px;
   transition: all 0.4s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--glow-shadow);
 }
 
-.feature-card.active {
+.feature-card.active,
+.feature-card:hover {
   transform: translateY(-10px);
   border-color: var(--accent-primary);
+  box-shadow: 0 0 30px rgba(97, 218, 251, 0.3);
 }
 
 .feature-icon {
@@ -177,14 +184,6 @@
 .stat-card h4 {
   color: var(--text-secondary);
   margin-bottom: 15px;
-}
-
-.stat-number {
-  font-size: 2.5rem;
-  color: var(--text-primary);
-  font-weight: bold;
-  background: var(--gradient-primary);
-  -webkit-text-fill-color: transparent;
 }
 
 @keyframes fadeIn {
