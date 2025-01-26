@@ -53,13 +53,6 @@ function Footer() {
              <FaGithub />
            </a>
          </div>
-         <div className="newsletter">
-           <h4>Newsletter</h4>
-           <div className="newsletter-form">
-             <input type="email" placeholder="Tu email" />
-             <button type="submit">Suscribir</button>
-           </div>
-         </div>
        </div>
      </div>
 
