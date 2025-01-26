@@ -1,4 +1,3 @@
-// components/Api/RandomUserApi.jsx
 import { useState, useEffect } from 'react';
 import './RandomUser.css';
 
