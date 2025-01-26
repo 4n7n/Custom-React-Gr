@@ -1,92 +1,129 @@
-import useRandomUser from '../../utils/useRandomUser';
+// components/Api/RandomUserApi.jsx
+import { useState, useEffect } from 'react';
+import './RandomUser.css';
 
-const RandomUser = () => {
-  const {
-    users,
-    loading,
-    error,
-    gender,
-    setGender,
-    userCount,
-    setUserCount,
-    fetchUsers,
-  } = useRandomUser(); // Usar el hook personalizado
+function RandomUserApi() {
+ const [users, setUsers] = useState([]);
+ const [loading, setLoading] = useState(false);
+ const [error, setError] = useState(null);
+ const [filters, setFilters] = useState({
+   gender: '',
+   results: 6,
+   nationality: '',
+   seed: 'abc'
+ });
 
-  return (
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <h1>Generador de Usuarios Aleatorios</h1>
+ const fetchUsers = async () => {
+   setLoading(true);
+   try {
+     const params = new URLSearchParams({
+       ...filters,
+       inc: 'name,location,email,dob,phone,picture'
+     });
+     const response = await fetch(`https://randomuser.me/api/?${params}`);
+     if (!response.ok) throw new Error('Error al cargar usuarios');
+     const data = await response.json();
+     setUsers(data.results);
+   } catch (err) {
+     setError(err.message);
+   } finally {
+     setLoading(false);
+   }
+ };
 
-      {/* Filtros */}
-      <div style={{ marginBottom: '20px' }}>
-        <label>
-          Género:
-          <select
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            style={{ marginLeft: '10px', padding: '5px' }}
-          >
-            <option value="">Cualquiera</option>
-            <option value="male">Masculino</option>
-            <option value="female">Femenino</option>
-          </select>
-        </label>
-        <label style={{ marginLeft: '20px' }}>
-          Cantidad de Usuarios:
-          <input
-            type="number"
-            value={userCount}
-            onChange={(e) => setUserCount(e.target.value)}
-            min="1"
-            max="10"
-            style={{ marginLeft: '10px', width: '50px', textAlign: 'center' }}
-          />
-        </label>
-        <button
-          onClick={fetchUsers}
-          style={{
-            marginLeft: '20px',
-            padding: '5px 10px',
-            fontSize: '14px',
-            cursor: 'pointer',
-          }}
-        >
-          Generar
-        </button>
-      </div>
+ useEffect(() => {
+   fetchUsers();
+ }, []);
 
-      {/* Estado de carga */}
-      {loading && <p>Cargando...</p>}
+ const handleFilterChange = (field, value) => {
+   setFilters(prev => ({...prev, [field]: value}));
+ };
 
-      {/* Error */}
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+ return (
+   <div className="api-container">
+     <header className="api-header">
+       <h1>Generador de Perfiles de Usuario</h1>
+       <p>Crea perfiles de usuario aleatorios para tu proyecto</p>
+     </header>
 
-      {/* Usuarios */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
-        {users.map((user, index) => (
-          <div
-            key={index}
-            style={{
-              border: '1px solid #ccc',
-              borderRadius: '10px',
-              padding: '15px',
-              width: '200px',
-              textAlign: 'center',
-            }}
-          >
-            <img
-              src={user.picture.large}
-              alt={`${user.name.first} ${user.name.last}`}
-              style={{ borderRadius: '50%', width: '100px', height: '100px' }}
-            />
-            <h3>{`${user.name.first} ${user.name.last}`}</h3>
-            <p>Edad: {user.dob.age}</p>
-            <p>Teléfono: {user.phone}</p>
-            <p>Dirección: {user.location.city}, {user.location.country}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+     <section className="filter-section">
+       <div className="filter-controls">
+         <div className="filter-group">
+           <label>Género</label>
+           <select 
+             value={filters.gender}
+             onChange={(e) => handleFilterChange('gender', e.target.value)}
+           >
+             <option value="">Todos</option>
+             <option value="male">Masculino</option>
+             <option value="female">Femenino</option>
+           </select>
+         </div>
 
-export default RandomUser;
+         <div className="filter-group">
+           <label>País</label>
+           <select
+             value={filters.nationality}
+             onChange={(e) => handleFilterChange('nationality', e.target.value)}
+           >
+             <option value="">Todos</option>
+             <option value="US">Estados Unidos</option>
+             <option value="ES">España</option>
+             <option value="BR">Brasil</option>
+             <option value="FR">Francia</option>
+           </select>
+         </div>
+
+         <div className="filter-group">
+           <label>Cantidad</label>
+           <input
+             type="number"
+             value={filters.results}
+             onChange={(e) => handleFilterChange('results', e.target.value)}
+             min="1"
+             max="50"
+           />
+         </div>
+       </div>
+
+       <button className="generate-button" onClick={fetchUsers}>
+         Generar Perfiles
+       </button>
+     </section>
+
+     {loading && <div className="loading-overlay">Cargando perfiles...</div>}
+     {error && <div className="error-message">{error}</div>}
+
+     <section className="users-section">
+       {users.map((user, idx) => (
+         <article key={idx} className="user-profile">
+           <div className="profile-header">
+             <img src={user.picture.large} alt="Profile" />
+             <h2>{`${user.name.first} ${user.name.last}`}</h2>
+           </div>
+           <div className="profile-details">
+             <div className="detail-item">
+               <span className="label">Email:</span>
+               <span>{user.email}</span>
+             </div>
+             <div className="detail-item">
+               <span className="label">Edad:</span>
+               <span>{user.dob.age} años</span>
+             </div>
+             <div className="detail-item">
+               <span className="label">Teléfono:</span>
+               <span>{user.phone}</span>
+             </div>
+             <div className="detail-item">
+               <span className="label">Ubicación:</span>
+               <span>{`${user.location.city}, ${user.location.country}`}</span>
+             </div>
+           </div>
+         </article>
+       ))}
+     </section>
+   </div>
+ );
+}
+
+export default RandomUserApi;

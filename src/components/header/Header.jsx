@@ -1,3 +1,4 @@
+// components/Header/Header.jsx
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -13,12 +14,16 @@ function Header() {
         <nav className="nav-menu">
           <ul>
             <li><Link to="/">Inicio</Link></li>
-            <li><Link to="/crear-cliente">Crear Cliente</Link></li>
             <li><Link to="/perfiles">Perfiles</Link></li>
+            <li><Link to="/crear-cliente">Crear Cliente</Link></li>
             <li><Link to="/estadisticas">Estadísticas</Link></li>
           </ul>
         </nav>
 
+        <div className="header-actions">
+          <button className="btn-secondary">Iniciar Sesión</button>
+          <button className="btn-primary">Registrarse</button>
+        </div>
       </div>
     </header>
   );

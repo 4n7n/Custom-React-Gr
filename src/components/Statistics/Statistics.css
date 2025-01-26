@@ -1,0 +1,54 @@
+.statistics-container {
+    padding: 24px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .chart-section {
+    margin: 24px 0;
+    overflow-x: auto;
+  }
+  
+  .custom-metrics {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  
+  .input-group select,
+  .input-group input {
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    min-width: 150px;
+  }
+  
+  .add-metric-btn {
+    background: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .add-metric-btn:hover {
+    background: #2563eb;
+  }
+  
+  @media (max-width: 768px) {
+    .input-group {
+      flex-direction: column;
+    }
+    
+    .chart-section {
+      margin: 16px -24px;
+    }
+  }
