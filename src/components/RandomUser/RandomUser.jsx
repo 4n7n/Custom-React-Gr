@@ -76,7 +76,6 @@ function RandomUserApi() {
     <div className="api-container">
       <header className="api-header">
         <h1>Generador de Perfiles de Usuario</h1>
-        <p>Crea perfiles de usuario aleatorios para tu proyecto</p>
       </header>
       
       <section className="filter-section">

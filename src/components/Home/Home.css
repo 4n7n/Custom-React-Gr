@@ -1,203 +1,173 @@
 /* Main Container */
 .home-container {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    min-height: 100vh;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  
-  .home-container.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Hero Section */
+  background-color: #1a1a1a;
+  color: #ffffff;
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.home-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 5rem 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border-bottom: 2px solid #2d2d2d;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #007BFF, #6A0DAD);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: #dcdcdc;
+  line-height: 1.6;
+}
+
+.hero-animation {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle at center, #007BFF33 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 4s infinite;
+}
+
+/* Features Section */
+.features-section {
+  padding: 4rem 2rem;
+  background-color: #1a1a1a;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  color: #ffffff;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* Stats Section */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background-color: #2d2d2d;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #1a1a1a;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h4 {
+  color: #6A0DAD;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
   .hero-section {
-    padding: 5rem 20rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    border-bottom: 2px solid #2d2d2d;
-  }
-  
-  .hero-content {
-    max-width: 600px;
-  }
-  
-  .hero-title {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-  
-  .gradient-text {
-    background: linear-gradient(45deg, #4CAF50, #45a049);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  
-  .hero-description {
-    font-size: 1.2rem;
-    color: #a0a0a0;
-    line-height: 1.6;
+    padding: 4rem 5rem;
+    flex-direction: column;
+    text-align: center;
   }
   
   .hero-animation {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle at center, #4CAF5033 0%, transparent 70%);
-    border-radius: 50%;
-    animation: pulse 4s infinite;
+    width: 300px;
+    height: 300px;
   }
   
-  /* Features Section */
-  .features-section {
-    padding: 4rem 2rem;
-    background-color: #1a1a1a;
-  }
-  
-  .section-title {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 3rem;
-    color: #ffffff;
-  }
-  
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-  }
-  
-  .feature-card {
-    background-color: #2d2d2d;
-    padding: 2rem;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-  }
-  
-  .feature-card.active {
-    border-color: #4CAF50;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.1);
-  }
-  
-  .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .feature-card h3 {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .feature-card p {
-    color: #a0a0a0;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-  
-  .feature-link {
-    color: #4CAF50;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .feature-link:hover {
-    color: #45a049;
-  }
-  
-  .arrow {
-    transition: transform 0.3s ease;
-  }
-  
-  .feature-link:hover .arrow {
-    transform: translateX(5px);
-  }
-  
-  /* Stats Section */
   .stats-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    padding: 4rem 2rem;
-    background-color: #2d2d2d;
+    padding: 3rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 2rem;
   }
   
-  .stat-card {
-    text-align: center;
-    padding: 2rem;
-    border-radius: 12px;
-    background-color: #1a1a1a;
-    transition: transform 0.3s ease;
-  }
-  
-  .stat-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .stat-card h4 {
-    color: #4CAF50;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .stat-number {
+  .hero-title {
     font-size: 2.5rem;
-    font-weight: bold;
-    color: #ffffff;
   }
   
-  /* Animations */
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.5;
-    }
-    50% {
-      transform: scale(1.05);
-      opacity: 0.7;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 0.5;
-    }
+  .hero-description {
+    font-size: 1rem;
   }
   
-  /* Ensure all elements respect border-box */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  .hero-animation {
+    width: 250px;
+    height: 250px;
   }
   
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  .stats-section {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 2rem 1rem;
   }
   
-  ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+  .hero-title {
+    font-size: 2rem;
   }
   
-  ::-webkit-scrollbar-thumb {
-    background: #4CAF50;
-    border-radius: 4px;
+  .hero-description {
+    font-size: 0.9rem;
   }
   
-  ::-webkit-scrollbar-thumb:hover {
-    background: #45a049;
+  .hero-animation {
+    width: 200px;
+    height: 200px;
   }
+  
+  .stats-section {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 1.5rem 0.5rem;
+  }
+}
